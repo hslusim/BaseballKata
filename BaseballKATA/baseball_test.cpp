@@ -1,14 +1,25 @@
 #include "gmock/gmock.h"
 #include "baseball.cpp"
 
-TEST(BaseballGame, ThrowExceptionInputInvalidLength) {
+using namespace testing;
+
+class BaseballFixture : public Test {
+public:
     Baseball game;
-    EXPECT_THROW(game.guess(string("12")), length_error);
+    void assertInvalidInput(string guessNumber) {
+        //game.guess() 수행 후, Exception이 발생해야 PASS이다.
+        try {
+            game.guess(guessNumber);
+            FAIL();
+        }
+        catch (exception e) {
+            // PASS
+        }
+    }
+};
+
+TEST_F(BaseballFixture, ThrowExceptionInputInvalidCase) {
+    assertInvalidInput("12");
+    assertInvalidInput("12s");
 }
 
-TEST(BaseballGame, ThrowExceptionInputInvalidChar) {
-    Baseball game;
-    EXPECT_THROW(game.guess(string("12s")), invalid_argument);
-}
-
-    

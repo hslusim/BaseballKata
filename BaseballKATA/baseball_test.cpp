@@ -21,5 +21,6 @@ public:
 TEST_F(BaseballFixture, ThrowExceptionInputInvalidCase) {
     assertInvalidInput("12");
     assertInvalidInput("12s");
+    assertInvalidInput("121");
 }
 

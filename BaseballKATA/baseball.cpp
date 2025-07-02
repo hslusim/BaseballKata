@@ -1,3 +1,10 @@
-class Baseball {
+#include <string>
+#include <stdexcept>
+using namespace std;
 
+class Baseball {
+public:
+    void guess(const string& string) {
+        throw length_error("Must be 3 digits");
+    }
 };

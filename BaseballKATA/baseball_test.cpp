@@ -1,7 +1,14 @@
 #include "gmock/gmock.h"
 #include "baseball.cpp"
 
-TEST(BaseballGame, ThrowExceptionInputLength) {
+TEST(BaseballGame, ThrowExceptionInputInvalidLength) {
     Baseball game;
     EXPECT_THROW(game.guess(string("12")), length_error);
 }
+
+TEST(BaseballGame, ThrowExceptionInputInvalidChar) {
+    Baseball game;
+    EXPECT_THROW(game.guess(string("12s")), invalid_argument);
+}
+
+    
